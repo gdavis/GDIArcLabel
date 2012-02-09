@@ -1,0 +1,289 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		77CE55B614E459C900822A39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CE55B514E459C900822A39 /* UIKit.framework */; };
+		77CE55B814E459C900822A39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CE55B714E459C900822A39 /* Foundation.framework */; };
+		77CE55BA14E459C900822A39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CE55B914E459C900822A39 /* CoreGraphics.framework */; };
+		77CE55C014E459C900822A39 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77CE55BE14E459C900822A39 /* InfoPlist.strings */; };
+		77CE55C214E459C900822A39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CE55C114E459C900822A39 /* main.m */; };
+		77CE55C614E459C900822A39 /* GDIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CE55C514E459C900822A39 /* GDIAppDelegate.m */; };
+		77CE55C914E459C900822A39 /* GDIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CE55C814E459C900822A39 /* GDIViewController.m */; };
+		77CE55CC14E459C900822A39 /* GDIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CE55CA14E459C900822A39 /* GDIViewController.xib */; };
+		77CE55D414E45A0200822A39 /* GDIArcLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CE55D314E45A0200822A39 /* GDIArcLabel.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		77CE55B114E459C900822A39 /* GDIArcLabel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GDIArcLabel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		77CE55B514E459C900822A39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		77CE55B714E459C900822A39 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		77CE55B914E459C900822A39 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		77CE55BD14E459C900822A39 /* GDIArcLabel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GDIArcLabel-Info.plist"; sourceTree = "<group>"; };
+		77CE55BF14E459C900822A39 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		77CE55C114E459C900822A39 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		77CE55C314E459C900822A39 /* GDIArcLabel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GDIArcLabel-Prefix.pch"; sourceTree = "<group>"; };
+		77CE55C414E459C900822A39 /* GDIAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GDIAppDelegate.h; sourceTree = "<group>"; };
+		77CE55C514E459C900822A39 /* GDIAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GDIAppDelegate.m; sourceTree = "<group>"; };
+		77CE55C714E459C900822A39 /* GDIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GDIViewController.h; sourceTree = "<group>"; };
+		77CE55C814E459C900822A39 /* GDIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GDIViewController.m; sourceTree = "<group>"; };
+		77CE55CB14E459C900822A39 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GDIViewController.xib; sourceTree = "<group>"; };
+		77CE55D214E45A0200822A39 /* GDIArcLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDIArcLabel.h; sourceTree = "<group>"; };
+		77CE55D314E45A0200822A39 /* GDIArcLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDIArcLabel.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		77CE55AE14E459C900822A39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77CE55B614E459C900822A39 /* UIKit.framework in Frameworks */,
+				77CE55B814E459C900822A39 /* Foundation.framework in Frameworks */,
+				77CE55BA14E459C900822A39 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		77CE55A614E459C900822A39 = {
+			isa = PBXGroup;
+			children = (
+				77CE55BB14E459C900822A39 /* GDIArcLabel */,
+				77CE55B414E459C900822A39 /* Frameworks */,
+				77CE55B214E459C900822A39 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		77CE55B214E459C900822A39 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				77CE55B114E459C900822A39 /* GDIArcLabel.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		77CE55B414E459C900822A39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77CE55B514E459C900822A39 /* UIKit.framework */,
+				77CE55B714E459C900822A39 /* Foundation.framework */,
+				77CE55B914E459C900822A39 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		77CE55BB14E459C900822A39 /* GDIArcLabel */ = {
+			isa = PBXGroup;
+			children = (
+				77CE55D214E45A0200822A39 /* GDIArcLabel.h */,
+				77CE55D314E45A0200822A39 /* GDIArcLabel.m */,
+				77CE55C414E459C900822A39 /* GDIAppDelegate.h */,
+				77CE55C514E459C900822A39 /* GDIAppDelegate.m */,
+				77CE55C714E459C900822A39 /* GDIViewController.h */,
+				77CE55C814E459C900822A39 /* GDIViewController.m */,
+				77CE55CA14E459C900822A39 /* GDIViewController.xib */,
+				77CE55BC14E459C900822A39 /* Supporting Files */,
+			);
+			path = GDIArcLabel;
+			sourceTree = "<group>";
+		};
+		77CE55BC14E459C900822A39 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				77CE55BD14E459C900822A39 /* GDIArcLabel-Info.plist */,
+				77CE55BE14E459C900822A39 /* InfoPlist.strings */,
+				77CE55C114E459C900822A39 /* main.m */,
+				77CE55C314E459C900822A39 /* GDIArcLabel-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		77CE55B014E459C900822A39 /* GDIArcLabel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77CE55CF14E459C900822A39 /* Build configuration list for PBXNativeTarget "GDIArcLabel" */;
+			buildPhases = (
+				77CE55AD14E459C900822A39 /* Sources */,
+				77CE55AE14E459C900822A39 /* Frameworks */,
+				77CE55AF14E459C900822A39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GDIArcLabel;
+			productName = GDIArcLabel;
+			productReference = 77CE55B114E459C900822A39 /* GDIArcLabel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		77CE55A814E459C900822A39 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 77CE55AB14E459C900822A39 /* Build configuration list for PBXProject "GDIArcLabel" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 77CE55A614E459C900822A39;
+			productRefGroup = 77CE55B214E459C900822A39 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				77CE55B014E459C900822A39 /* GDIArcLabel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		77CE55AF14E459C900822A39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77CE55C014E459C900822A39 /* InfoPlist.strings in Resources */,
+				77CE55CC14E459C900822A39 /* GDIViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		77CE55AD14E459C900822A39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77CE55C214E459C900822A39 /* main.m in Sources */,
+				77CE55C614E459C900822A39 /* GDIAppDelegate.m in Sources */,
+				77CE55C914E459C900822A39 /* GDIViewController.m in Sources */,
+				77CE55D414E45A0200822A39 /* GDIArcLabel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		77CE55BE14E459C900822A39 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77CE55BF14E459C900822A39 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		77CE55CA14E459C900822A39 /* GDIViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77CE55CB14E459C900822A39 /* en */,
+			);
+			name = GDIViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		77CE55CD14E459C900822A39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		77CE55CE14E459C900822A39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		77CE55D014E459C900822A39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GDIArcLabel/GDIArcLabel-Prefix.pch";
+				INFOPLIST_FILE = "GDIArcLabel/GDIArcLabel-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		77CE55D114E459C900822A39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GDIArcLabel/GDIArcLabel-Prefix.pch";
+				INFOPLIST_FILE = "GDIArcLabel/GDIArcLabel-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		77CE55AB14E459C900822A39 /* Build configuration list for PBXProject "GDIArcLabel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77CE55CD14E459C900822A39 /* Debug */,
+				77CE55CE14E459C900822A39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		77CE55CF14E459C900822A39 /* Build configuration list for PBXNativeTarget "GDIArcLabel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77CE55D014E459C900822A39 /* Debug */,
+				77CE55D114E459C900822A39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 77CE55A814E459C900822A39 /* Project object */;
+}
