@@ -10,6 +10,10 @@
 
 @interface GDIArcLabel : UILabel
 
+@property (nonatomic) CGFloat radius;
+
+- (NSMutableAttributedString *)attributedString;
+
 + (CGFloat)sizeInRadiansOfText:(NSString *)text font:(UIFont *)font radius:(CGFloat)radius;
 
 @end

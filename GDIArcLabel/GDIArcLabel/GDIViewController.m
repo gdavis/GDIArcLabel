@@ -24,7 +24,8 @@
     [super viewDidLoad];
 
     GDIArcLabel *label = [[GDIArcLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
-    label.text = @"OMG Text Label!";
+    label.font = [UIFont boldSystemFontOfSize:24.f];
+    label.text = @"1½\" thick";
     [self.view addSubview:label];
 }
 
