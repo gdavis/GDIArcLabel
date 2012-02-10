@@ -3,7 +3,7 @@
 //  GDIArcLabel
 //
 //  Created by Grant Davis on 2/9/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Grant Davis Interactive, LLC. All rights reserved.
 //
 
 #import "GDIViewController.h"
@@ -25,7 +25,10 @@
 
     GDIArcLabel *label = [[GDIArcLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
     label.font = [UIFont boldSystemFontOfSize:24.f];
-    label.text = @"1½\" thick";
+    label.text = [@"1½\" thick" uppercaseString];
+    label.textColor = [UIColor blueColor];
+    label.kerning = 2.f;
+    label.radius = 200.f;
     [self.view addSubview:label];
 }
 

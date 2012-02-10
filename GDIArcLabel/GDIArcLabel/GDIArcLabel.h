@@ -3,7 +3,7 @@
 //  GDIArcLabel
 //
 //  Created by Grant Davis on 2/9/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Grant Davis Interactive, LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,8 +12,17 @@
 
 @property (nonatomic) CGFloat radius;
 
-- (NSMutableAttributedString *)attributedString;
+// additional spacing between each letter
+@property (nonatomic) CGFloat kerning;
 
-+ (CGFloat)sizeInRadiansOfText:(NSString *)text font:(UIFont *)font radius:(CGFloat)radius;
+
+// utility method to calculate how many radians the given text, font, and kerning will need to fit on the given radius
++ (CGFloat)sizeInRadiansOfText:(NSString *)text font:(UIFont *)font radius:(CGFloat)radius kerning:(CGFloat)kern;
+
+// utility method to calculate a cartesian coordinate from a polar coordinate
++ (CGPoint)cartesianCoordinateFromPolarWithRadius:(CGFloat)radius radians:(CGFloat)radians;
+
+// method to generate an attributed string for use with CoreText from an NSString and UIFont
++ (NSMutableAttributedString *)attributedStringWithText:(NSString *)text font:(UIFont *)font;
 
 @end

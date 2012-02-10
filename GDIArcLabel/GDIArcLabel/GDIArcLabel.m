@@ -3,11 +3,10 @@
 //  GDIArcLabel
 //
 //  Created by Grant Davis on 2/9/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Grant Davis Interactive, LLC. All rights reserved.
 //
 
 #import "GDIArcLabel.h"
-#import "GDIMath.h"
 #import <CoreText/CoreText.h>
 
 
@@ -18,12 +17,16 @@ CTFontRef CTFontCreateFromUIFont(UIFont *font);
 
 @implementation GDIArcLabel
 @synthesize radius = _radius;
+@synthesize kerning = _kerning;
+
+#pragma mark - Instance Methods
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         _radius = 100.f;
+        _kerning = 1.f;
     }
     return self;
 }
@@ -38,33 +41,6 @@ CTFontRef CTFontCreateFromUIFont(UIFont *font)
 }
 
 
-- (NSMutableAttributedString *)attributedString
-{
-    assert(self.text != nil);
-    assert(self.font != nil);
-	
-	// Create the attributed string
-	CFMutableAttributedStringRef attrString = CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
-    
-    if (self.text != nil) {
-        CFAttributedStringReplaceString(attrString, CFRangeMake(0, 0), (__bridge CFStringRef)self.text);
-    }
-    
-    CFRange textRange = CFRangeMake(0, CFAttributedStringGetLength(attrString));
-    
-    // set the font
-    CTFontRef ctFont = CTFontCreateFromUIFont(self.font);
-    CFAttributedStringSetAttribute(attrString, textRange, kCTFontAttributeName, ctFont);
-    CFRelease(ctFont);
-    
-    // set text color
-    CFAttributedStringSetAttribute(attrString, textRange, kCTForegroundColorAttributeName, self.textColor.CGColor);
-    
-    NSMutableAttributedString *nsString = (__bridge NSMutableAttributedString *) attrString;
-    return nsString;
-}
-
-
 - (void)drawTextInRect:(CGRect)rect
 {
     if (self.text == nil || self.font == nil )
@@ -72,11 +48,11 @@ CTFontRef CTFontCreateFromUIFont(UIFont *font)
     
     // setup the context
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextTranslateCTM(context, CGRectGetMidX(rect), CGRectGetMidY(rect));
+    CGContextTranslateCTM(context, CGRectGetMidX(rect), 0);
     CGContextScaleCTM(context, 1.f, -1.f);
     
-    // DEBUG: reference point for origin
+    /*
+    // !DEBUG! reference point for origin
     CGContextAddEllipseInRect(context, CGRectMake(-5, -5, 10, 10));
     CGContextSetRGBFillColor(context, 1.f, 0.f, 1.f, 1.f);
     CGContextFillPath(context);
@@ -86,8 +62,17 @@ CTFontRef CTFontCreateFromUIFont(UIFont *font)
     CGContextSetRGBStrokeColor(context, 1.f, 0.f, 1.f, 1.f);
     CGContextStrokePath(context);
     
+    CGContextMoveToPoint(context, -_radius, 0);
+    CGContextAddLineToPoint(context, _radius, 0);
+    CGContextStrokePath(context);
+    */
+    
+    
     // get the attributed string for our current state
-    NSMutableAttributedString *attrString = [self attributedString];
+    NSMutableAttributedString *attrString = [GDIArcLabel attributedStringWithText:self.text font:self.font];
+    
+    // set text color
+    CFAttributedStringSetAttribute((__bridge CFMutableAttributedStringRef)attrString, CFRangeMake(0, CFAttributedStringGetLength((__bridge CFMutableAttributedStringRef)attrString)), kCTForegroundColorAttributeName, self.textColor.CGColor);
     
     // create a line for the text
     CTLineRef line = CTLineCreateWithAttributedString((__bridge CFMutableAttributedStringRef)attrString);
@@ -102,8 +87,13 @@ CTFontRef CTFontCreateFromUIFont(UIFont *font)
     CGFontRef cgFont = CTFontCopyGraphicsFont(ctFont, NULL);
     CGContextSetFont(context, cgFont);
     CGContextSetFontSize(context, CTFontGetSize(ctFont));
+    CGContextSetFillColorWithColor(context, self.textColor.CGColor);
     
-    CGFloat currentRotation = M_PI;
+    // calculate the final size of the text with our given properties. 
+    CGFloat sizeOfTextInRadians = [GDIArcLabel sizeInRadiansOfText:self.text font:self.font radius:_radius kerning:self.kerning];
+    
+    // determine where to start the rotation based on the calculated size of the text
+    CGFloat currentRotation = M_PI + (M_PI * .5 - sizeOfTextInRadians * .5);
     
     // go through the runs of the line and draw
     for (; runIndex < runCount; runIndex++) {
@@ -131,13 +121,12 @@ CTFontRef CTFontCreateFromUIFont(UIFont *font)
             CGFloat glyphWidth = CTRunGetTypographicBounds(run, glyphRange, &ascent, &descent, NULL);
             glyphSize.width = glyphWidth;
             glyphSize.height = ascent + descent;
-                        
-            CGFloat glyphSizeInRadians = glyphSize.width / _radius;
-            CGPoint position = cartesianCoordinateFromPolar(_radius, currentRotation);
-
-            CGContextSetFillColorWithColor(context, self.textColor.CGColor);
+            
+            CGFloat glyphSizeInRadians = (glyphSize.width + self.kerning) / _radius;
+            CGPoint position = [GDIArcLabel cartesianCoordinateFromPolarWithRadius:_radius radians:currentRotation];
         
-            CGAffineTransform textTransform = CGAffineTransformMakeRotation((currentRotation - M_PI) - M_PI * .5);
+            CGFloat rotationAmountAtCenterOfGlyph = ((currentRotation + glyphSizeInRadians * .5) - M_PI) - M_PI * .5;
+            CGAffineTransform textTransform = CGAffineTransformMakeRotation(rotationAmountAtCenterOfGlyph);
             CGContextSetTextMatrix(context, textTransform);
             CGContextShowGlyphsAtPoint(context, position.x, position.y, &glyph, 1);
             
@@ -146,7 +135,7 @@ CTFontRef CTFontCreateFromUIFont(UIFont *font)
     }
     
     CFRelease(ctFont);
-    CFRelease(cgFont);    
+    CFRelease(cgFont);
 }
 
 
@@ -156,27 +145,105 @@ CTFontRef CTFontCreateFromUIFont(UIFont *font)
     [self setNeedsDisplay];
 }
 
-
-+ (CGFloat)sizeInRadiansOfText:(NSString *)text font:(UIFont *)font radius:(CGFloat)radius
+- (void)setKerning:(CGFloat)kerning
 {
-    // break the characters into an array so we can draw each character
-    NSMutableArray *textCharacters = [NSMutableArray arrayWithCapacity:[text length]];
-    for (int i=0; i<[text length]; i++) {
-        [textCharacters addObject: [text substringWithRange:NSMakeRange(i, 1)]];
+    _kerning = kerning;
+    [self setNeedsDisplay];
+}
+
+#pragma mark - Class Methods
+
++ (NSMutableAttributedString *)attributedStringWithText:(NSString *)text font:(UIFont *)font
+{
+    assert(text != nil);
+    assert(font != nil);
+	
+	// Create the attributed string
+	CFMutableAttributedStringRef attrString = CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
+    
+    if (text != nil) {
+        CFAttributedStringReplaceString(attrString, CFRangeMake(0, 0), (__bridge CFStringRef)text);
     }
     
-    CGFloat dr = 0.f;
+    CFRange textRange = CFRangeMake(0, CFAttributedStringGetLength(attrString));
     
-    for (int i=0; i<[textCharacters count]; i++) {
+    // set the font
+    CTFontRef ctFont = CTFontCreateFromUIFont(font);
+    CFAttributedStringSetAttribute(attrString, textRange, kCTFontAttributeName, ctFont);
+    CFRelease(ctFont);
+    
+    NSMutableAttributedString *nsString = (__bridge NSMutableAttributedString *) attrString;
+    return [nsString copy];
+}
+
+
++ (CGPoint)cartesianCoordinateFromPolarWithRadius:(CGFloat)radius radians:(CGFloat)radians
+{
+    CGFloat x,y;
+    
+    x = radius * cosf(radians);
+    y = radius * sinf(radians);
+    
+    return CGPointMake(x, y);
+}
+
+
++ (CGFloat)sizeInRadiansOfText:(NSString *)text font:(UIFont *)font radius:(CGFloat)radius kerning:(CGFloat)kern
+{
+    // get the attributed string for our current state
+    NSMutableAttributedString *attrString = [GDIArcLabel attributedStringWithText:text font:font];
+    
+    // create a line for the text
+    CTLineRef line = CTLineCreateWithAttributedString((__bridge CFMutableAttributedStringRef)attrString);
+    assert(line != NULL);
+    
+    CFArrayRef runArray = CTLineGetGlyphRuns(line);
+    CFIndex runCount = CFArrayGetCount(runArray);
+    CFIndex runIndex = 0;
+    
+    // create fonts for the glyph and apply to the context
+    CTFontRef ctFont = CTFontCreateFromUIFont(font);
+    CGFontRef cgFont = CTFontCopyGraphicsFont(ctFont, NULL);
+    
+    CGFloat currentRotation = 0;
+    
+    // go through the runs of the line and draw
+    for (; runIndex < runCount; runIndex++) {
         
-        NSString *string = [textCharacters objectAtIndex:i];
-        CGSize characterSize = [string sizeWithFont:font];
-        CGFloat rotation = ( characterSize.width + font.pointSize * .05) / (radius + font.descender);
+        // pull out the current run
+        CTRunRef run = CFArrayGetValueAtIndex(runArray, runIndex);
         
-        dr += rotation;
+        // count the glphs in the run
+        CFIndex glyphCount = CTRunGetGlyphCount(run);
+        
+        // now loop through all the glyphs and draw each
+        CFIndex glyphIndex = 0;
+        for (; glyphIndex < glyphCount; glyphIndex++) {
+            
+            // pull out the glyph
+            CFRange glyphRange = CFRangeMake(glyphIndex, 1);    
+            
+            // get the glyph and its position
+            CGGlyph glyph;
+            CTRunGetGlyphs(run, glyphRange, &glyph);
+            
+            // get the glyph size
+            CGFloat ascent, descent;
+            CGSize glyphSize;
+            CGFloat glyphWidth = CTRunGetTypographicBounds(run, glyphRange, &ascent, &descent, NULL);
+            glyphSize.width = glyphWidth;
+            glyphSize.height = ascent + descent;
+            
+            CGFloat glyphSizeInRadians = (glyphSize.width + kern) / radius;
+            
+            currentRotation += fabsf(glyphSizeInRadians);
+        }
     }
     
-    return dr;
+    CFRelease(ctFont);
+    CFRelease(cgFont);
+    
+    return currentRotation;
 }
 
 

@@ -17,7 +17,6 @@
 		77CE55CC14E459C900822A39 /* GDIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CE55CA14E459C900822A39 /* GDIViewController.xib */; };
 		77CE55D414E45A0200822A39 /* GDIArcLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CE55D314E45A0200822A39 /* GDIArcLabel.m */; };
 		77CE55D814E46F9100822A39 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CE55D714E46F9100822A39 /* CoreText.framework */; };
-		77CE55DB14E47E7A00822A39 /* GDIMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CE55DA14E47E7A00822A39 /* GDIMath.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +36,6 @@
 		77CE55D214E45A0200822A39 /* GDIArcLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDIArcLabel.h; sourceTree = "<group>"; };
 		77CE55D314E45A0200822A39 /* GDIArcLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDIArcLabel.m; sourceTree = "<group>"; };
 		77CE55D714E46F9100822A39 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		77CE55D914E47E7A00822A39 /* GDIMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDIMath.h; sourceTree = "<group>"; };
-		77CE55DA14E47E7A00822A39 /* GDIMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDIMath.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +84,6 @@
 		77CE55BB14E459C900822A39 /* GDIArcLabel */ = {
 			isa = PBXGroup;
 			children = (
-				77CE55D914E47E7A00822A39 /* GDIMath.h */,
-				77CE55DA14E47E7A00822A39 /* GDIMath.m */,
 				77CE55D214E45A0200822A39 /* GDIArcLabel.h */,
 				77CE55D314E45A0200822A39 /* GDIArcLabel.m */,
 				77CE55C414E459C900822A39 /* GDIAppDelegate.h */,
@@ -178,7 +173,6 @@
 				77CE55C614E459C900822A39 /* GDIAppDelegate.m in Sources */,
 				77CE55C914E459C900822A39 /* GDIViewController.m in Sources */,
 				77CE55D414E45A0200822A39 /* GDIArcLabel.m in Sources */,
-				77CE55DB14E47E7A00822A39 /* GDIMath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
