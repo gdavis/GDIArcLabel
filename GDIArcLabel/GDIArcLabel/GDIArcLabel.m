@@ -157,6 +157,7 @@ CTFontRef CTFontCreateFromUIFont(UIFont *font)
         }
     }
     
+    CFRelease(line);
     CFRelease(ctFont);
     CFRelease(cgFont);
 }
@@ -224,8 +225,7 @@ CTFontRef CTFontCreateFromUIFont(UIFont *font)
     CFAttributedStringSetAttribute(attrString, textRange, kCTFontAttributeName, ctFont);
     CFRelease(ctFont);
     
-    NSMutableAttributedString *nsString = (__bridge NSMutableAttributedString *) attrString;
-    return [nsString copy];
+    return (__bridge_transfer  NSMutableAttributedString *) attrString;
 }
 
 
@@ -283,6 +283,7 @@ CTFontRef CTFontCreateFromUIFont(UIFont *font)
         }
     }
     
+    CFRelease(line);
     CFRelease(ctFont);
     CFRelease(cgFont);
     
